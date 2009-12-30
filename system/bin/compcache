@@ -1,0 +1,37 @@
+#!/system/bin/sh
+#
+# Compcache manager
+# shade@chemlab.org (cyanogen)
+# 
+# v2 - Wes Garner, added automatic backing swap if swap partition is available
+
+DEV=/dev/block/ramzswap0
+MODULE=ramzswap
+MODULES_DIR=/system/modules/lib/modules/`uname -r`
+
+case "$1" in
+	start)
+	modprobe ramzswap;
+        insmod $MODULES_DIR/$MODULE.ko
+	if [ -e /dev/block/mmcblk0p3 ]; then
+		rzscontrol $DEV --backing_swap=/dev/block/mmcblk0p3 --memlimit_kb=32768 --init;
+	else
+		rzscontrol $DEV -i -d 32768;
+	fi;
+        swapon $DEV 
+		;;
+
+	stop)
+        swapoff $DEV >/dev/null 2>&1
+        rmmod $MODULE >/dev/null 2>&1
+		;;
+    stats)
+        rzscontrol $DEV --stats
+        ;;
+	*)
+		echo "Usage: $0 {start|stop|stats}"
+		exit 1
+esac
+
+exit 0
+

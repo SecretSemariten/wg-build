@@ -1,0 +1,17 @@
+#!/system/bin/sh
+# Automatic System Dalvik-Cache copy to data partition
+# Wes Garner
+
+if [ ! -d /data/system-cache ]; then
+	mkdir /data/system-cache;
+fi;
+
+echo "--- Moving System Cache to Data Partition System Cache folder";
+for sysfile in /data/dalvik-cache/system*.dex ; do
+	if [ ! -h $sysfile ]; then
+	echo "Moving $(basename $sysfile) to System Cache folder";
+		busybox mv -f $sysfile /data/system-cache/$(basename $sysfile);
+		#busybox rm -f $sysfile;
+		busybox ln -s /data/system-cache/$(basename $sysfile) $sysfile;
+	fi;
+done;

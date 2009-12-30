@@ -1,0 +1,9 @@
+#!/system/bin/sh
+
+mount -o remount,ro /system;
+
+echo "---init.d Complete, Ready to Boot";
+
+sync;
+setprop cm.filesystem.ready 1;
+

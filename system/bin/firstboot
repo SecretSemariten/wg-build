@@ -1,0 +1,34 @@
+#! /system/bin/sh
+#
+# firstboot.sh by Wes Garner
+#
+
+{
+    CPUINFO=$(cat /proc/cpuinfo | busybox grep Hardware | busybox cut - -d ' ' -f 2,3);
+    if [ "${CPUINFO}" == "sapphire" ]; then
+	echo "---AudioPara4.csv fix";
+	    mv /system/etc/AudioPara4-sapphire.csv /system/etc/AudioPara4.csv;
+	
+    fi;
+}
+
+echo "--- Clearing Cache";
+    if [ -e /system/bin/clearcache ]; then
+	/system/bin/sh /system/bin/clearcache;
+    fi;
+
+echo "--- Symlinking System Dalvik-Cache to Data Partition";
+for sysfile in /data/system-cache/*.dex ; do
+	if [ -e /data/dalvik-cache/$(basename $sysfile) ]; then
+		busybox rm /data/dalvik-cache/$(basename $sysfile);
+	fi;
+	if [ -h /data/dalvik-cache/$(basename $sysfile) ]; then
+		busybox rm /data/dalvik-cache/$(basename $sysfile);
+	fi;
+	busybox ln -s $sysfile /data/dalvik-cache/$(basename $sysfile);
+done;
+
+echo "--- Symlinking Media Folder";
+	busybox rm -r /system/media;
+	busybox ln -s /data/.media /system/media;
+

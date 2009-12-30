@@ -1,0 +1,19 @@
+#! /system/bin/sh
+#
+# Application fix and reinstall by Wes Garner
+#
+mount -o rw,remount /system
+echo "--- Reinstalling Applications";
+    for apk in /data/app/*.apk ; do
+	pm install -r $apk;
+    done;
+    for apk in /data/app-private/*.apk ; do
+	pm install -r $apk;
+    done;
+    for apk in /system/app/*.apk ; do
+	pm install -r $apk;
+    done;
+
+echo "--- Fix Permissions";
+    /system/bin/sh /system/bin/fix_permissions;
+mount -o ro,remount /system

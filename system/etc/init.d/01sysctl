@@ -1,0 +1,8 @@
+#!/system/bin/sh
+sysctl -p
+
+# Set "deadline" scheduler fifo batch to 1 for mtdblocks and mmc
+for i in `ls -1 /sys/block/mtdblock*` /sys/block/mmcblk0
+do
+	echo 1 > $i/queue/iosched/fifo_batch
+done
