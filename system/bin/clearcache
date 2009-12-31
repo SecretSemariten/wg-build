@@ -12,5 +12,4 @@ busybox rm -r /data/data/*/*cache*
 busybox rm -r /data/data/*/*/*cache*
 busybox rm -r /data/data/*/*/*webview*
 busybox rm -r /data/data/com.facebook.katana/files
-busybox rm -r /data/data/com.android.vending/*
-busybox rm /data/app/com.android.vending.apk
+
