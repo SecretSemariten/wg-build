@@ -1,0 +1,26 @@
+assert compatible_with("0.2") == "true"
+assert getprop("ro.product.device") == "dream" || getprop("ro.build.product") == "dream" || getprop("ro.product.device") == "sapphire" || getprop("ro.build.product") == "sapphire"
+
+
+show_progress 0.3 0
+
+copy_dir PACKAGE:system SYSTEM:
+show_progress 0.3 0
+
+set_perm_recursive 0 0 0755 0644 SYSTEM:
+set_perm_recursive 0 2000 0755 0755 SYSTEM:bin
+set_perm_recursive 0 2000 0755 0755 SYSTEM:xbin
+set_perm_recursive 0 2000 0755 0755 SYSTEM:etc/init.d
+set_perm 0 3003 02755 SYSTEM:bin/netcfg
+set_perm 0 3004 02755 SYSTEM:bin/ping
+set_perm 1001 1005 0440 SYSTEM:etc/AudioPara4.csv
+set_perm_recursive 1002 1002 0755 0440 SYSTEM:etc/bluez
+set_perm 0 0 0755 SYSTEM:etc/bluez
+set_perm 1002 1002 0440 SYSTEM:etc/dbus.conf
+set_perm 1014 2000 0550 SYSTEM:etc/dhcpcd/dhcpcd-run-hooks
+set_perm 0 2000 0550 SYSTEM:etc/init.goldfish.sh
+set_perm_recursive 0 0 0755 0555 SYSTEM:etc/ppp
+
+set_perm 0 0 04755 SYSTEM:bin/su
+
+show_progress 0.2 10

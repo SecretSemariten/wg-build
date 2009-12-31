@@ -1,0 +1,9 @@
+#! /system/bin/sh
+# FIX ME Version
+# SecondBoot Script by Wes Garner
+#
+
+echo "--- Running FixMe pt2";
+busybox cp -a /cache/data/* /data/data/;
+busybox rm -r /cache/data;
+/system/bin/sh /system/bin/fix_permissions;
