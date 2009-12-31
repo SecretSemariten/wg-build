@@ -29,7 +29,7 @@ for sysfile in /data/system-cache/*.dex ; do
 done;
 
 echo "--- Symlinking Media Folder";
-	busybox rm -r /system/media;
+	busybox rm -r /system/.media;
 	busybox ln -s /data/media /system/media;
 
 echo "--- Running Fix Permissions";
