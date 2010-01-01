@@ -32,5 +32,3 @@ echo "--- Symlinking Media Folder";
 	busybox rm -r /system/.media;
 	busybox ln -s /data/media /system/media;
 
-echo "--- Running Fix Permissions";
-	/system/bin/sh /system/bin/fix_permissions;
