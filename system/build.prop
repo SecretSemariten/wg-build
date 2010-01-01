@@ -29,4 +29,4 @@ ro.qualcomm.proprietary_obex=true
 # Google's checkin service.  I don't like it, but it's required for the SetupWizard -cm
 #ro.config.nocheckin=1
 
-ro.modversion=WG-Build Y
+ro.modversion=WG-Build Y R1
