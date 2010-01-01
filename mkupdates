@@ -1,33 +1,31 @@
-#!/system/bin/sh
+cp -a BootImages/wlan-bfs.ko system/lib/modules/wlan.ko
 
-cp BootImages/wlan-bfs.ko ./system/lib/modules/wlan.ko
-
-cp BootImages/BFS-NoRHack.img ./boot.img
-zip add -r WGBuildY-BFSNoRHack.zip system
-zip add -r WGBuildY-BFSNoRHack.zip data
-zip add -r WGBuildY-BFSNoRHack.zip META-INF
-zip add WGBuildY-BFSNoRHack.zip boot.img
+cp -a BootImages/BFS-NoRHack.img ./boot.img
+zip -r WGBuildY-BFSNoRHack.zip system
+zip -r WGBuildY-BFSNoRHack.zip data
+zip -r WGBuildY-BFSNoRHack.zip META-INF
+zip WGBuildY-BFSNoRHack.zip boot.img
 signzip WGBuildY-BFSNoRHack.zip &
 
-cp BootImages/BFS-RHack.img ./boot.img
-zip add -r WGBuildY-BFSRHack.zip system
-zip add -r WGBuildY-BFSRHack.zip data
-zip add -r WGBuildY-BFSRHack.zip META-INF
-zip add WGBuildY-BFSRHack.zip boot.img
+cp -a BootImages/BFS-RHack.img ./boot.img
+zip -r WGBuildY-BFSRHack.zip system
+zip -r WGBuildY-BFSRHack.zip data
+zip -r WGBuildY-BFSRHack.zip META-INF
+zip WGBuildY-BFSRHack.zip boot.img
 signzip WGBuildY-BFSRHack.zip &
 
-cp BootImages/wlan-cfs.ko ./system/lib/modules/wlan.ko
+cp -a BootImages/wlan-cfs.ko system/lib/modules/wlan.ko
 
-cp BootImages/CFS-RHack.img ./boot.img
-zip add -r WGBuildY-CFSRHack.zip system
-zip add -r WGBuildY-CFSRHack.zip data
-zip add -r WGBuildY-CFSRHack.zip META-INF
-zip add WGBuildY-CFSRHack.zip boot.img
+cp -a BootImages/CFS-RHack.img ./boot.img
+zip -r WGBuildY-CFSRHack.zip system
+zip -r WGBuildY-CFSRHack.zip data
+zip -r WGBuildY-CFSRHack.zip META-INF
+zip WGBuildY-CFSRHack.zip boot.img
 signzip WGBuildY-CFSRHack.zip &
 
-cp BootImages/CFS-NoRHack.img ./boot.img
-zip add -r WGBuildY-CFSNoRHack.zip system
-zip add -r WGBuildY-CFSNoRHack.zip data
-zip add -r WGBuildY-CFSNoRHack.zip META-INF
-zip add WGBuildY-CFSNoRHack.zip boot.img
+cp -a BootImages/CFS-NoRHack.img ./boot.img
+zip -r WGBuildY-CFSNoRHack.zip system
+zip -r WGBuildY-CFSNoRHack.zip data
+zip -r WGBuildY-CFSNoRHack.zip META-INF
+zip WGBuildY-CFSNoRHack.zip boot.img
 signzip WGBuildY-CFSNoRHack.zip
